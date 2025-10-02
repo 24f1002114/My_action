@@ -3,7 +3,7 @@ name: Cache Dependencies
 on:
   push:
     branches:
-      - main
+      - main   # change to master if your branch is master
 
 jobs:
   build:
@@ -20,5 +20,5 @@ jobs:
           path: ~/.cache/pip
           key: cache-b9311d1
 
-      - name: Echo cache result
+      - name: prime-cache-b9311d1
         run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
