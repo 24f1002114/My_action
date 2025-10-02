@@ -3,7 +3,7 @@ name: Cache Dependencies
 on:
   push:
     branches:
-      - main   # or master if that is your branch
+      - main
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # ✅ Required step with the correct name
+      # Prime cache with required step name
       - name: prime-cache-b9311d1
         id: cache-step
         uses: actions/cache@v4
@@ -21,6 +21,6 @@ jobs:
           path: ~/.cache/pip
           key: cache-b9311d1
 
-      # ✅ Echo the cache result
+      # Explicit echo to see hit/miss
       - name: Echo cache result
         run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
